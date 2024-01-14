@@ -28,16 +28,23 @@ body{background-color: thistle;}
 
 #num>button{width: 62.5px;}
 
-#reset, #display, #num{
+#reset, #num{
     display:flex; 
     gap: 16px;
  }
 
-#reset>button, .display {
+#reset>button{
     padding: 12px;
     flex: 1;
 }
 
-.display{height: 60px; width: 250px;}
+#display{
+    height: 70px;
+    width: 290px; 
+    padding-right: 10px;
+    border: black solid 2px;
+    text-align: end;
+    font-size: 40px;
+}
 
-button, .display {background: white;}
+button, #display {background: white;}
