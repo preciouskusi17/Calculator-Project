@@ -9,15 +9,15 @@ body{background-color: thistle;}
 
 #container {
     width: 300px;
-    height: 480px;
-    padding: 32px;
+    height: 500px;
+    padding: 16px;
     display: flex;
     margin: auto;
-    margin-top: 16px;
+    margin-top: 32px;
     border-radius: 16px;
     flex-direction: column;
     border: 2px solid black;
-    background-color:aquamarine;
+    background-color:aqua;
     justify-content: space-between;
 }
 
@@ -39,7 +39,7 @@ body{background-color: thistle;}
 }
 
 #display{
-    height: 70px;
+    height: 100px;
     width: 290px; 
     padding-right: 10px;
     border: black solid 2px;
@@ -47,4 +47,8 @@ body{background-color: thistle;}
     font-size: 40px;
 }
 
+.display{height: 50px;}
+#clear{ background-color: blueviolet;}
+#delete{ background-color: red;}
+.operator,.equal{background-color: aquamarine;}
 button, #display {background: white;}

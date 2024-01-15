@@ -1,17 +1,17 @@
 function add(a,b){
-    return a + b;
+    return (Math.round((a + b)*1000))/1000;
 };
 
 function subtract(a,b){
-    return a-b;
+    return (Math.round((a-b)*1000))/1000;
 };
 
 function multiply(a,b){
-    return a*b;
+    return (Math.round((a*b)*1000))/1000;
 };
 
 function divide(a,b){
-    return (Math.round((a/b)*100))/100;
+    return (Math.round((a/b)*1000))/1000;
 };
 
 function operate (num1,operator,num2){
@@ -39,55 +39,54 @@ let operator=''
 let storedNum='';
 let firstNum='';
 let secondNum='';
-let content=''
-
-btns.forEach((digit)=>{
-    digit.addEventListener('click',()=>{
-        content += digit.textContent
-        display.textContent = content
-    })
-})
-dotSign.addEventListener('click',()=>{
-    if (storedNum===''){
-        storedNum='0';
-        storedNum += '.'
-    } 
-    dotSign.disabled=true
-})
-
-deleteBtn.addEventListener('click',()=>{
-    content -= digit.textContent
-    display.textContent = content
-})
 
 numbers.forEach((num)=>{
     num.addEventListener('click',()=>{
         storedNum +=num.value;
-        console.log(storedNum)
-        if (firstNum !==''){
-            secondNum=operate(parseFloat(firstNum),operator,parseFloat(storedNum));
-            console.log(secondNum);
-            storedNum=secondNum;
-            
-        }
-    })
-})
+        result.textContent=storedNum
+})})
 
 operators.forEach((item)=>{
     item.addEventListener('click',()=>{
-    operator=item.value;
-    firstNum= storedNum;
-    storedNum=''
+        if (firstNum !==''){
+            secondNum=operate(parseFloat(firstNum),operator,parseFloat(storedNum));
+            console.log(secondNum);
+            storedNum=secondNum;   
+        }
+        operator=item.value;
+        firstNum= storedNum;
+        display.textContent=firstNum+ ' '+ operator
+        storedNum=''
+        result.textContent=''
     })
 })
 
 equalBtn.addEventListener('click',()=>{
+    secondNum=operate(parseFloat(firstNum),operator,parseFloat(storedNum));
+    result.style.cssText='font-size: 45px';
     result.textContent=secondNum
+    display.textContent=firstNum+ ' '+ operator + ' ' + storedNum +' = ' ;
+})
+
+dotSign.addEventListener('click',()=>{
+    if (storedNum===''){
+        storedNum='0';
+        storedNum += '.'
+    } else {
+        storedNum +='.';
+        result.textContent += '.'
+    }
+    dotSign.disabled=true
+})
+
+deleteBtn.addEventListener('click',()=>{
+    result.textContent=result.textContent.slice(0,-1)
+    storedNum=storedNum.slice(0,-1);
 })
 
 clearBtn.addEventListener('click',()=>{
-    result.textContent='';
-    display.textContent=0;
+    result.textContent=0;
+    display.textContent='';
      storedNum='';
     firstNum='';
     secondNum='';
